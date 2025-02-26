@@ -54,7 +54,7 @@ class ExampleFlow(Flow):
 def kickoff(topic):
     poem_flow = ExampleFlow()
     poem_flow.writer_crew(topic)
-    # poem_flow.writer_crew_listener()
+    poem_flow.writer_crew_listener()
     # poem_flow.store_output()
     # poem_flow.download_pdf()
 
