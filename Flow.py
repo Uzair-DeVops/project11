@@ -28,35 +28,35 @@ class ExampleFlow(Flow):
             self.state = {}
         self.state["output"] = result.raw
 
-    @listen("writer_crew_listener")
-    def store_output(self):
-        pdf_filename = "output.pdf"
-        if self.state is None:
-            self.state = {}
+    # @listen("writer_crew_listener")
+    # def store_output(self):
+    #     pdf_filename = "output.pdf"
+    #     if self.state is None:
+    #         self.state = {}
 
-        c = canvas.Canvas(pdf_filename)
-        c.drawString(100, 750, self.state["output"])  # Writing text on PDF
-        c.save()
+    #     c = canvas.Canvas(pdf_filename)
+    #     c.drawString(100, 750, self.state["output"])  # Writing text on PDF
+    #     c.save()
 
-        st.write("Output stored in output.pdf")
-        st.success("PDF generation successful.")
-        st.balloons()
+    #     st.write("Output stored in output.pdf")
+    #     st.success("PDF generation successful.")
+    #     st.balloons()
 
-        self.state["pdf_filename"] = pdf_filename  # Save PDF filename in state
+    #     self.state["pdf_filename"] = pdf_filename  # Save PDF filename in state
 
-    @listen("store_output")
-    def download_pdf(self):
-        if self.state and "pdf_filename" in self.state:
-            with open(self.state["pdf_filename"], "rb") as f:
-                pdf_bytes = f.read()
-            st.download_button("Download PDF", pdf_bytes, file_name="output.pdf", mime="application/pdf")
+    # @listen("store_output")
+    # def download_pdf(self):
+    #     if self.state and "pdf_filename" in self.state:
+    #         with open(self.state["pdf_filename"], "rb") as f:
+    #             pdf_bytes = f.read()
+    #         st.download_button("Download PDF", pdf_bytes, file_name="output.pdf", mime="application/pdf")
 
 def kickoff(topic):
     poem_flow = ExampleFlow()
     poem_flow.writer_crew(topic)
-    poem_flow.writer_crew_listener()
-    poem_flow.store_output()
-    poem_flow.download_pdf()
+    # poem_flow.writer_crew_listener()
+    # poem_flow.store_output()
+    # poem_flow.download_pdf()
 
 # Streamlit UI
 st.title("AI Book Writer")
