@@ -10,11 +10,17 @@ requires-python = ">=3.11"
 dependencies = [
     "crewai>=0.102.0",
     "crewai-tools>=0.36.0",
+    "fpdf>=1.7.2",
+    "reportlab>=4.3.1",
+    "streamlit>=1.42.2",
 ]
 
 [project.scripts]
 project11 = "project11:main"
-book = "project11.main:BookWriter"
+outliner = "project11.agent1_main:outline_writer"
+writer = "project11.agent2_main:writer"
+End = "project11.main:last"
+
 
 
 [build-system]

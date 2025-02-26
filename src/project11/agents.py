@@ -16,3 +16,11 @@ class MyBookWriterAgents:
             verbose = True,
             llm = model,
         )
+    def Book_Writer(self):
+        return Agent(
+            role = "Book_Writer",
+            goal = "Write a complete book on the provided outline",
+            backstory = "i am a season expert in writing books i have 10+ years of experience in writing books",
+            verbose = True,
+            llm = model,
+        )
